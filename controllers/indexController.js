@@ -52,3 +52,23 @@ exports.shortenerUrl = function(req, res, next) {
     });
     
 };
+
+exports.redirect = function(req, res, next) {
+  //step 1, create query to find url
+  var urlId =   parseInt(req.params.id, 10);
+  var query = { _id : urlId};
+  //step 2: find url on the database
+  URLs.findById(query, function(err, url){
+      if (err) {
+          console.log("error finding url " + err);
+          res.send({'error' : "error finding url " + err});
+      } else {
+          if (url) {
+             // if found redirect user 
+             res.redirect(url.original_url);
+          } else {
+             res.send({'error' : "error shortened url with id of " + urlId});
+          }
+      } 
+  })
+};

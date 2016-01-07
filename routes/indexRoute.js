@@ -8,4 +8,6 @@ router.get('/', indexCtrl.sendHomePage);
 
 router.get('/new/:url(*)', indexCtrl.shortenerUrl);
 
+router.get('/:id', indexCtrl.redirect);
+
 module.exports = router;
