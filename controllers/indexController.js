@@ -3,7 +3,7 @@ var URLs = mongoose.model('URL');
 var validUrl = require('url-valid');
 
 exports.sendHomePage = function(req,res, next) {
-    res.render('index', { title: 'URL Shortener Microservice' });
+    res.render('index', { title: 'URL Shortener Microservice', baseUrl: process.env.BASEURL });
 };
 
 exports.shortenerUrl = function(req, res, next) {

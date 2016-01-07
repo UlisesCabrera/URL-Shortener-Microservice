@@ -1,11 +1,52 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <meta charset="utf-8">
+    <title><%- title %></title>
+    <meta name="author" content="Ulises Cabrera">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="jumbotron">
+            <h1><%= title %></h1>
+            <p>A microservice where the user can pass a URL as a parameter and it will receive a shortened URL in the JSON response, 
+             If it pass an invalid URL that doesn't follow the valid http://www.example.com format, the JSON response will contain an error instead.
+             And when the user visits that shortened URL, it will redirect it to the original link.</p>
+          </div>   
+          
+            <h3>Example creation usage:</h3>
+            <div class="well well-sm">
+              <p class="text-danger">
+              <%= baseUrl %>new/https://www.google.com<br>
+              <%= baseUrl %>new/http://nba.com
+              </p>
+            </div>
+            <h3>Example creation output:</h3>
+            <div class="well well-sm">
+              <p class="text-danger">
+            { "original_url": "http://nba.com", "short_url": "<%= baseUrl %>6" }
+              </p>
+            </div>
+            <h3>Usage:</h3>
+            <div class="well well-sm">
+              <p class="text-danger">
+                <%= baseUrl %>6
+              </p>
+            </div>
+            <h3>Will Redirect To:</h3>
+            <div class="well well-sm">
+              <p class="text-danger">
+                http://nba.com
+              </p>
+            </div>              
+        </div>
+      </div>
+    </div>
+
   </body>
 </html>

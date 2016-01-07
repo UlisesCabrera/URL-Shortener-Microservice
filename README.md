@@ -1,18 +1,22 @@
+# URL Shortener Microservice
+A microservice where the user can pass a URL as a parameter and it will receive a shortened URL in the JSON response, 
+If it pass an invalid URL that doesn't follow the valid http://www.example.com format, 
+the JSON response will contain an error instead.And when the user visits that shortened URL, it will redirect it to the original link.
 
-     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
-    ----------------------------------------------------------------- 
-
-
-Hi there! Welcome to Cloud9 IDE!
-
-To get you started, create some files, play with the terminal,
-or visit http://docs.c9.io for our documentation.
-If you want, you can also go watch some training videos at
-http://www.youtube.com/user/c9ide.
-
-Happy coding!
-The Cloud9 IDE team
+###Example creation usage:
+```sh
+https://url-sh.herokuapp.com/new/https://www.google.com<br>
+https://url-sh.herokuapp.com/new/http://nba.com
+```
+###Example creation output:
+```sh
+{ "original_url": "http://nba.com", "short_url": "https://url-sh.herokuapp.com/6" }
+```
+###Usage:
+```sh
+https://url-sh.herokuapp.com/6
+```
+###Will Redirect To:
+```sh
+http://nba.com
+```
